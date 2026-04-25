@@ -1,55 +1,52 @@
-import React, { useState, useEffect } from "react";
-import { Container, Row } from "react-bootstrap";
+import React from "react";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import Particle from "../Particle";
-import pdf from "../../Assets/../Assets/Soumyajit_Behera.pdf";
 import { AiOutlineDownload } from "react-icons/ai";
-import { Document, Page, pdfjs } from "react-pdf";
-import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+import resumePdf from "../../Assets/chandu_Resume_new.pdf";
+import Particle from "../Particle";
 
 function ResumeNew() {
-  const [width, setWidth] = useState(1200);
-
-  useEffect(() => {
-    setWidth(window.innerWidth);
-  }, []);
-
   return (
-    <div>
-      <Container fluid className="resume-section">
-        <Particle />
-        <Row style={{ justifyContent: "center", position: "relative" }}>
-          <Button
-            variant="primary"
-            href={pdf}
-            target="_blank"
-            style={{ maxWidth: "250px" }}
-          >
-            <AiOutlineDownload />
-            &nbsp;Download CV
-          </Button>
+    <Container fluid className="resume-section">
+      <Particle />
+      <Container>
+        <Row style={{ justifyContent: "center" }}>
+          <Col lg={8}>
+            <Card className="project-card-view resume-card">
+              <Card.Body>
+                <h1 className="project-heading" style={{ paddingTop: 0 }}>
+                  My <strong className="purple">Resume</strong>
+                </h1>
+                <p className="resume-copy">
+                  You can preview my latest resume below or download the PDF
+                  directly.
+                </p>
+                <div className="resume-actions">
+                  <Button variant="primary" href={resumePdf} target="_blank">
+                    <AiOutlineDownload />
+                    &nbsp;Download Resume
+                  </Button>
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
         </Row>
 
         <Row className="resume">
-          <Document file={pdf} className="d-flex justify-content-center">
-            <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
-          </Document>
-        </Row>
-
-        <Row style={{ justifyContent: "center", position: "relative" }}>
-          <Button
-            variant="primary"
-            href={pdf}
-            target="_blank"
-            style={{ maxWidth: "250px" }}
-          >
-            <AiOutlineDownload />
-            &nbsp;Download CV
-          </Button>
+          <Col lg={10}>
+            <Card className="project-card-view resume-preview-card">
+              <Card.Body>
+                <iframe
+                  title="Chandu Resume"
+                  src={resumePdf}
+                  className="resume-frame"
+                />
+              </Card.Body>
+            </Card>
+          </Col>
         </Row>
       </Container>
-    </div>
+    </Container>
   );
 }
 

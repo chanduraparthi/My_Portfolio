@@ -1,6 +1,7 @@
 import React from "react";
-import GitHubCalendar from "react-github-calendar";
 import { Row } from "react-bootstrap";
+import GitHubCalendar from "react-github-calendar";
+import { portfolioData } from "../../data/portfolio";
 
 function Github() {
   return (
@@ -12,10 +13,10 @@ function Github() {
       }}
     >
       <h1 className="project-heading pb-4" style={{ paddingBottom: "20px" }}>
-        Days I <strong className="purple">Code</strong>
+        GitHub <strong className="purple">Contributions</strong>
       </h1>
       <GitHubCalendar
-        username="soumyajit4419"
+        username={portfolioData.githubUsername}
         blockSize={30}
         blockMargin={10}
         color="#c084f5"

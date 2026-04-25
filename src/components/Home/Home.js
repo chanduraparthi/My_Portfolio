@@ -1,17 +1,12 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
+import { AiFillGithub, AiFillInstagram } from "react-icons/ai";
+import { FaLinkedinIn } from "react-icons/fa";
 import homeLogo from "../../Assets/home-main.svg";
+import { portfolioData } from "../../data/portfolio";
 import Particle from "../Particle";
 import Home2 from "./Home2";
 import Type from "./Type";
-import Techstack from "../About/Techstack";
-import Github from "../About/Github";
-import {
-  AiFillGithub,
-  AiOutlineTwitter,
-  AiFillInstagram,
-} from "react-icons/ai";
-import { FaLinkedinIn } from "react-icons/fa";
 
 function Home() {
   return (
@@ -22,26 +17,26 @@ function Home() {
           <Row>
             <Col md={7} className="home-header">
               <h1 style={{ paddingBottom: 15 }} className="heading">
-                Hi There!{" "}
-                <span className="wave" role="img" aria-labelledby="wave">
-                  👋🏻
-                </span>
+                Hi there!
               </h1>
 
               <h1 className="heading-name">
-                I'M
-                <strong className="main-name"> SOUMYAJIT BEHERA</strong>
+                I am
+                <strong className="main-name"> {portfolioData.name}</strong>
               </h1>
 
               <div style={{ padding: 50, textAlign: "left" }}>
                 <Type />
               </div>
+
+              <p className="home-headline">{portfolioData.headline}</p>
+              <p className="home-hero-copy">{portfolioData.heroDescription}</p>
             </Col>
 
             <Col md={5} style={{ paddingBottom: 20 }}>
               <img
                 src={homeLogo}
-                alt="home pic"
+                alt="portfolio hero"
                 className="img-fluid"
                 style={{ maxHeight: "450px" }}
               />
@@ -56,49 +51,24 @@ function Home() {
           <Col md={12} className="home-about-social">
             <h1>Find Me On</h1>
             <p>
-              Feel free to <span className="purple">connect </span>with me
+              Feel free to <span className="purple">connect</span> with me
             </p>
             <ul className="home-about-social-links">
-              <li className="social-icons">
-                <a
-                  href="https://github.com/soumyajit4419"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <AiFillGithub />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href="https://twitter.com/Soumyajit4419"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <AiOutlineTwitter />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href="https://www.linkedin.com/in/soumyajit4419/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <FaLinkedinIn />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href="https://www.instagram.com/soumyajit4419"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour home-social-icons"
-                >
-                  <AiFillInstagram />
-                </a>
-              </li>
+              {portfolioData.socialLinks.map((link) => (
+                <li className="social-icons" key={link.label}>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="icon-colour home-social-icons"
+                    aria-label={link.label}
+                  >
+                    {link.label === "GitHub" && <AiFillGithub />}
+                    {link.label === "LinkedIn" && <FaLinkedinIn />}
+                    {link.label === "Instagram" && <AiFillInstagram />}
+                  </a>
+                </li>
+              ))}
             </ul>
           </Col>
         </Row>

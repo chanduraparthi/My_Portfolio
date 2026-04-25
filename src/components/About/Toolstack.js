@@ -1,30 +1,27 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import macOs from "../../Assets/TechIcons/Apple MacOSX.svg";
-import chrome from "../../Assets/TechIcons/Google Chrome.svg";
-import vsCode from "../../Assets/TechIcons/vscode.svg";
-import intelliJ from "../../Assets/TechIcons/intellij-idea.svg";
+import { FaChrome, FaFigma, FaGithub } from "react-icons/fa";
+import { SiGit, SiPostman, SiVisualstudiocode } from "react-icons/si";
+import { portfolioData } from "../../data/portfolio";
+
+const toolIcons = {
+  "VS Code": <SiVisualstudiocode fontSize={"24px"} />,
+  Git: <SiGit fontSize={"24px"} />,
+  GitHub: <FaGithub fontSize={"24px"} />,
+  Postman: <SiPostman fontSize={"24px"} />,
+  Figma: <FaFigma fontSize={"24px"} />,
+  "Chrome DevTools": <FaChrome fontSize={"24px"} />,
+};
 
 function Toolstack() {
   return (
     <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-      <Col xs={4} md={2} className="tech-icons">
-        <img src={macOs} alt="macOs" className="tech-icon-images" />
-        <div className="tech-icons-text">Mac Os</div>
-      </Col>
-      <Col xs={4} md={2} className="tech-icons ">
-        <img src={chrome} alt="Chrome" className="tech-icon-images" />
-        <div className="tech-icons-text">Google Chrome</div>
-      </Col>
-      <Col xs={4} md={2} className="tech-icons ">
-        <img src={vsCode} alt="vsCode" className="tech-icon-images" />
-        <div className="tech-icons-text">Vs Code</div>
-      </Col>
-
-      <Col xs={4} md={2} className="tech-icons ">
-        <img src={intelliJ} alt="go" className="tech-icon-images" />
-        <div className="tech-icons-text">IntelliJ</div>
-      </Col>
+      {portfolioData.tools.map((tool) => (
+        <Col xs={12} md={3} className="tech-icons" key={tool}>
+          {toolIcons[tool]}
+          <div className="tech-icons-text">{tool}</div>
+        </Col>
+      ))}
     </Row>
   );
 }
