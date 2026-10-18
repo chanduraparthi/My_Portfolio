@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { FaChrome, FaFigma, FaGithub } from "react-icons/fa";
-import { SiGit, SiPostman, SiVisualstudiocode } from "react-icons/si";
+import { SiGit, SiPostman, SiVisualstudiocode, SiEclipseide } from "react-icons/si";
 import { portfolioData } from "../../data/portfolio";
 
 const toolIcons = {
@@ -10,6 +10,7 @@ const toolIcons = {
   GitHub: <FaGithub fontSize={"24px"} />,
   Postman: <SiPostman fontSize={"24px"} />,
   Figma: <FaFigma fontSize={"24px"} />,
+  Eclipse: <SiEclipseide fontSize={"24px"} />,
   "Chrome DevTools": <FaChrome fontSize={"24px"} />,
 };
 

@@ -24,6 +24,7 @@ function Projects() {
                 isBlog={false}
                 title={project.title}
                 description={project.description}
+                technologies={project.technologies}
                 ghLink={project.ghLink}
                 demoLink={project.demoLink}
               />

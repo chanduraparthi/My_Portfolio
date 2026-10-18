@@ -5,6 +5,7 @@ import Aboutcard from "./AboutCard";
 import Github from "./Github";
 import Techstack from "./Techstack";
 import Toolstack from "./Toolstack";
+import Education from "./Education";
 import Particle from "../Particle";
 
 function About() {
@@ -35,6 +36,11 @@ function About() {
               <img src={laptopImg} alt="about" className="img-fluid" />
             </Col>
           </Row>
+
+          <h1 className="project-heading">
+            Education & <strong className="purple">Background</strong>
+          </h1>
+          <Education />
 
           <h1 className="project-heading">
             Professional <strong className="purple">Skillset</strong>

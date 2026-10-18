@@ -6,8 +6,10 @@ import { Link } from "react-router-dom";
 import {
   AiOutlineFundProjectionScreen,
   AiOutlineHome,
+  AiOutlineMail,
   AiOutlineUser,
 } from "react-icons/ai";
+import { FaAward } from "react-icons/fa";
 import { CgFileDocument } from "react-icons/cg";
 import { portfolioData } from "../data/portfolio";
 
@@ -33,7 +35,10 @@ function NavBar() {
     >
       <Container>
         <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
-          {portfolioData.shortName}
+          <span className="brand-name purple font-weight-bold">
+            {portfolioData.shortName}
+          </span>
+          <span className="brand-dot">.</span>
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
@@ -77,10 +82,30 @@ function NavBar() {
             <Nav.Item>
               <Nav.Link
                 as={Link}
+                to="/certifications"
+                onClick={() => updateExpanded(false)}
+              >
+                <FaAward style={{ marginBottom: "2px" }} /> Certifications
+              </Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item>
+              <Nav.Link
+                as={Link}
                 to="/resume"
                 onClick={() => updateExpanded(false)}
               >
                 <CgFileDocument style={{ marginBottom: "2px" }} /> Resume
+              </Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item>
+              <Nav.Link
+                as={Link}
+                to="/contact"
+                onClick={() => updateExpanded(false)}
+              >
+                <AiOutlineMail style={{ marginBottom: "2px" }} /> Contact
               </Nav.Link>
             </Nav.Item>
           </Nav>
